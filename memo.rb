@@ -7,35 +7,21 @@ if memo_type === "1"
     puts "拡張子を除いたファイルを入力してください。"
     memo_title = gets.chomp.to_s
     
+    CSV.open("#{memo_title}.csv","w")do|csv|
     puts"メモをしたい内容を記述してください。"
     puts"Ctrl+Dでメモを完了します"
-    text_main = gets.chomp.to_s
-    
-    CSV.open("#{memo_title}.csv","w")do|csv|
-    csv << [text_main]
+    create = readlines(chomp: true)
+    csv << create
     end
     
 elsif memo_type === "2"
     puts"既存のメモを編集します。"
-    
-    Dir.glob('**/*.csv') do |item|
-    puts item
-    end
-    
     puts"拡張子を除いたファイル名を入力してください。"
-    
-    memo_title = gets.chomp.to_s
-    
-    puts"メモをしたい内容を記述してください。"
-    puts"Ctrl+Dでメモを完了します"
-    
-    text_main = gets.chomp.to_s
-    
-    CSV.open("#{memo_title}.csv","a")do|csv|
-    csv << [text_main]
-    end
-    
-else 
-    puts"正しい数字を入力してください。"
-    
+    search = gets.chomp.to_s
+    CSV.open("#{search}.csv","w") do |csv|
+    puts"上書きしたい内容を記述してください。"
+    puts"入力後Ctrl+Dでメモを完了します"
+    create = readlines(chomp: true)
+    csv << create
+   end
 end
