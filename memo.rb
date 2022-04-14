@@ -7,8 +7,8 @@ if memo_type === "1"
     puts "拡張子を除いたファイルを入力してください。"
     memo_title = gets.chomp.to_s
     
-CSV.open("#{memo_title}.csv","w") do |csv|
-    puts"Ctrl+Dでメモを完了します"
+    CSV.open("#{memo_title}.csv","w") do |csv|
+    puts"メモしたい内容を記述してください。"
     puts"Ctrl+Dでメモを完了します"
     create = readlines(chomp: true)
     csv << create
